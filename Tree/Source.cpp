@@ -34,7 +34,7 @@ int getByIndex(struct Node* List, int x) {
 void showList(struct Node* List) {
 	int size = List->value;
 	List = List->next;
-	cout << "Лист(" << size << "):";
+	cout << "List(" << size << "):";
 	for (int i = 0; i < size; ++i) {
 		cout << ' ' << List->value;
 		List = List->next;
@@ -97,8 +97,6 @@ void placePos(struct Node* List, int x) {
 }
 
 void main() {
-	srand(time(NULL));
-	setlocale(LC_ALL, "rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	int size = 0, temp = -1;
@@ -106,124 +104,124 @@ void main() {
 
 	while (temp != '8') {
 		showList(List);
-		cout << "1|Добавить элемент(Учёт предыдущих)" << endl;
-		cout << "2|Добавить элемент" << endl;
-		cout << "3|Удалить элемент (Номер)" << endl;
-		cout << "4|Удалить элемент (Элемент)" << endl;
-		cout << "5|Найти индекс" << endl;
-		cout << "6|Сортировка" << endl;
-		cout << "7|Очистка" << endl;
-		cout << "8|Выход" << endl;
-		cout << "Нажмите клавишу";
+		cout << "1|Add Element" << endl;
+		cout << "2|Add Element (Force)" << endl;
+		cout << "3|Delete Element (Index)" << endl;
+		cout << "4|Delete Element (Element)" << endl;
+		cout << "5|Find Index" << endl;
+		cout << "6|Sort" << endl;
+		cout << "7|Clear" << endl;
+		cout << "8|Exit" << endl;
+		cout << "Press Key...";
 		temp = _getch();
 		system("cls");
 		showList(List);
 
 		switch (temp)
 		{
-		case '1': //Добавить элемент
-			cout << "Введите элемент=";
+		case '1':
+			cout << "Enter element=";
 			cin >> temp;
 			if (findFirst(List, temp)) {
-				cout << "Элемент не добавлен!" << endl;
-				cout << "Нажмите Любую клавишу...";
+				cout << "Error" << endl;
+				cout << "Press any key...";
 				_getch();
 				system("cls");
 				temp = 0;
 				break;
 			}
 			placePos(List, temp);
-			cout << "Элемент " << temp << " добавлен!" << endl;
-			cout << "Нажмите Любую клавишу...";
+			cout << "Element " << temp << " added!" << endl;
+			cout << "Press any key...";
 			_getch();
 			system("cls");
 			temp = 0;
 			break;
-		case '2': //Добавить элемент в конец
-			cout << "Введите элемент=";
+		case '2':
+			cout << "Enter element=";
 			cin >> temp;
 			if (findFirst(List, temp)) {
-				cout << "Элемент не добавлен!" << endl;
-				cout << "Нажмите Любую клавишу...";
+				cout << "Error!" << endl;
+				cout << "Press any key...";
 				_getch();
 				system("cls");
 				temp = 0;
 				break;
 			}
 			addToList(List, temp);
-			cout << "Элемент " << temp << " добавлен!" << endl;
-			cout << "Нажмите Любую клавишу...";
+			cout << "Element " << temp << " added!" << endl;
+			cout << "Press any key...";
 			_getch();
 			system("cls");
 			temp = 0;
 			break;
-		case '3': //Удалить по номеру
+		case '3':
 			if (List->value == 0) {
-				cout << "Список чист!" << endl << "Нажмите Любую клавишу...";
+				cout << "Nothing there!" << endl << "Press any key...";
 				_getch();
 				system("cls");
 				break;
 			}
-			cout << "Введите номер элемента (1-" << List->value << ")=";
+			cout << "Enter number of element (1-" << List->value << ")=";
 			cin >> temp;
 			if (temp < 1 || temp > List->value) {
-				cout << "Вне диапазона!" << endl;
-				cout << "Нажмите Любую клавишу...";
+				cout << "Wrong index!" << endl;
+				cout << "Press any key...";
 				_getch();;
 				system("cls");
 				break;
 			}
 			deleteElement(List, temp);
-			cout << "Элемент удалён!" << endl;
-			cout << "Нажмите Любую клавишу...";
+			cout << "Element deleted!" << endl;
+			cout << "Press any key...";
 			_getch();
 			system("cls");
 			temp = 0;
 			break;
-		case '4': //Удалить
+		case '4':
 			if (List->value == 0) {
-				cout << "Список чист!" << endl << "Нажмите Любую клавишу...";
+				cout << "Nothing there!" << endl << "Press any key...";
 				_getch();
 				system("cls");
 				break;
 			}
-			cout << "Введите элемент=";
+			cout << "Enter element=";
 			cin >> temp;
 			if (!findFirst(List, temp)) {
-				cout << "Элемента нет!" << endl;
-				cout << "Нажмите Любую клавишу...";
+				cout << "Can't find!" << endl;
+				cout << "Press any key...";
 				_getch();
 				system("cls");
 				break;
 			}
 			deleteElement(List, findFirst(List, temp));
-			cout << "Элемент удалён!" << endl;
-			cout << "Нажмите Любую клавишу...";
+			cout << "Element deleted!" << endl;
+			cout << "Press any key...";
 			_getch();
 			system("cls");
 			temp = 0;
 			break;
-		case '5': //Поиск
-			cout << "Введите элемент=";
+		case '5':
+			cout << "Enter element=";
 			cin >> temp;
-			if (findFirst(List, temp)) cout << "Первый найденный элемент: " << findFirst(List, temp);
-			else cout << "Элементов не найденно!";
-			cout << endl << "Нажмите Любую клавишу...";
+			if (findFirst(List, temp)) cout << "First index: " << findFirst(List, temp);
+			else cout << "Р­Р»РµРјРµРЅС‚РѕРІ РЅРµ РЅР°Р№РґРµРЅРЅРѕ!";
+			cout << "Press any key...";
 			_getch();
 			system("cls");
 			temp = 0;
 			break;
-		case '6': //Сортировка
+		case '6':
 			sortList(List);
-			cout << "Сортировка завершена!" << endl;
-			cout << "Нажмите Любую клавишу...";
+			cout << "Sorted!" << endl;
+			cout << "Press any key...";
 			_getch();
 			system("cls");
 			break;
-		case '7': //Очистка
+		case '7':
 			for (int i = List->value; i > 0; --i) deleteElement(List, 1);
-			cout << "Лист очищен!" << endl;
-			cout << "Нажмите Любую клавишу...";
+			cout << "Cleared!" << endl;
+			cout << "Press any key...";
 			_getch();
 			system("cls");
 			break;
